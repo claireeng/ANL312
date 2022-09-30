@@ -12,6 +12,12 @@
 
 #
 ### 1. Introduction
+In December 2019, an atypical pneumonia disease was first detected in Wuhan, China. Termed as the coronavirus disease (COVID-19), its accelerated spread had eventually ignited a global health emergency, fuelling worldwide economic and social disruption. For nearly two years, countries have been battling the reoccurring waves of infection till today.
+\
+\
+Likewise, Singapore had experienced massive changes brought by the pandemic. The Singapore government had imposed stringent public health measures such as travel bans, mandated mask-wearing, social distancing, localised lockdowns (i.e., ‘Circuit Breaker’) to reduce transmission. Attributable to high vaccination rates (85%), majority of the cases (98%) in Singapore, to date (i.e., October 2021), report mild infections or are asymptotic. Against this background, Singapore’s Prime Minister (PM) Lee Hsien Loong thus announced on October 9, 2021 on the nation’s progressive strategy to live with COVID-19 as an endemic disease. Living with endemic COVID-19 means to have a strategy to monitor the disease and protect the vulnerable, while ensuring people can carry on with their lives without much damage to health and to the well-being of the society.
+\
+\
 The research aims to understand the public's perception in the government’s decision to transition towards endemic living in Singapore. It seeks to employ text mining, by performing sentiment analysis and topic modelling to analyse public's sentiments and uncover meaningful themes of concern on Reddit forums. This project therefore aims to answer two research questions: **(1) What are the public’s sentiments on the Government’s approach towards endemic living in Singapore, and (2) What are the themes of discussions on the Government’s decision to live with COVID-19?**
 \
 \
@@ -20,11 +26,13 @@ With the COVID-19 situation in Singapore constantly evolving, the ability to und
 &nbsp;
 
 ### 2. Data Collection
-Posts were crawled from Reddit under the subreddit, r/Singapore based on the search term “endemic”. Scrapped on October 27, 2021, the study collected a total of 12,852 comments from May 28, 2021 to October 23, 2021 using Python, through the Reddit API.
+- Posts were crawled from Reddit under the subreddit, r/Singapore based on the search term “endemic”. 
+- Scrapped on October 27, 2021
+- Collected a total of 12,852 comments from May 28, 2021 to October 23, 2021 using Python, through the Reddit API.
 
 #### Description of Dataset
 
-The dataset has a total of 12,852 rows and 4 columns. The four columns represent: 
+The dataset has a total of **12,852 rows and 4 columns**. The four columns represent: 
 
 - ***title***:  Headline of the topic that a user post
 - ***body***: Elaboration on the headline
@@ -37,7 +45,9 @@ The dataset has a total of 12,852 rows and 4 columns. The four columns represent
   <img src="https://user-images.githubusercontent.com/79804641/192767505-969c0705-0c64-4bfa-88b5-3ba3582d2031.png" width="400" height="250"/>
 </p>
 
-There are **no missing values**.
+
+- **No missing values** are detected.
+- Number of unique comments (12,408) is less than the number of rows in the dataset (12,852), **suggesting potential duplicates**. Duplicated comments will be taken into consideration during the data cleaning process.
 
 &nbsp;
 
@@ -55,7 +65,7 @@ Exploratory data analysis was conducted after an initial data cleaning was made.
 </p>
 
 
-The figures above illustrate the distribution of posts over time from May 28, 2021 to October 24, 2021. Over time, there is increasing posts regarding the endemic living on Reddit. There are peaks appearing at several specific date periods, indicating high public discussion.
+The figures above illustrate the distribution of posts over time from May 28, 2021 to October 24, 2021. Over time, there is **increasing posts** regarding the endemic living on Reddit. There are peaks appearing at several specific date periods, indicating **high public discussion**.
 
 &nbsp;
 
@@ -94,7 +104,7 @@ Text issues in the remaining rows are cleaned. We removed:
     -	Invalid characters (e.g., *‘â€™’, ‘â€œ’*)
 -	Non-alphanumeric characters (e.g.,* ^ () - ;)
 
-Additionally, contractions converted back to their base words (e.g., *“don’t”* becomes *“do not”*). Spelling normalisation is also conducted (e.g., convert *‘vaxx’* to *‘vaccine’*). Whitespaces are trimmed and texts are converted to lower case. 
+Additionally, contractions converted back to their base words (e.g., *“don’t”* becomes *“do not”*). Spelling normalisation is also conducted (e.g., convert *‘vaxx’* to *‘vaccine’*). Whitespaces are trimmed and texts are converted to lower case. After case normalisation, 49 rows of duplicates were then removed. The initial data clean resulted in 10 rows of comments remaining as one word text or blanks, which were also eliminated. 
 
 The figures below provide various instances of text issues found and corrected:
 
